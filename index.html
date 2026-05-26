@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CashControl C$+</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="shell">
+    <section class="phone auth-screen is-active" id="register-screen" aria-label="Cadastro">
+      <div class="auth-visual" aria-hidden="true">
+        <span class="visual-pill">C$+ inteligente</span>
+        <div class="visual-balance">
+          <small>Saldo atual</small>
+          <strong>R$ 8.500,00</strong>
+        </div>
+        <div class="visual-card magenta">
+          <span>Nubank</span>
+          <b>•••• 4532</b>
+        </div>
+        <p>Organize contas, cart&otilde;es, relat&oacute;rios e extratos em um &uacute;nico painel.</p>
+      </div>
+
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">C$+</div>
+        <strong>CashControl</strong>
+      </div>
+
+      <form class="auth-card" data-auth-form>
+        <label>
+          Nome de usu&aacute;rio
+          <input type="text" placeholder="Nome de usu&aacute;rio..." autocomplete="name">
+        </label>
+        <label>
+          E-mail
+          <input type="email" placeholder="E-mail..." autocomplete="email">
+        </label>
+        <label>
+          Senha
+          <span class="password-field">
+            <input type="password" placeholder="Senha..." autocomplete="new-password">
+            <button class="ghost-icon" type="button" data-toggle-password aria-label="Mostrar senha">olho</button>
+          </span>
+        </label>
+        <a href="#" data-screen-link="otp-screen">Esqueceu a senha?</a>
+        <button class="primary-button" type="submit">Cadastrar</button>
+      </form>
+
+      <div class="divider"><span>OU</span></div>
+      <p class="auth-copy">J&aacute; tem uma conta? <a href="#" data-screen-link="login-screen">Fazer login</a></p>
+    </section>
+
+    <section class="phone auth-screen" id="login-screen" aria-label="Login">
+      <div class="auth-visual" aria-hidden="true">
+        <span class="visual-pill">Painel financeiro</span>
+        <div class="visual-balance">
+          <small>Saldo total</small>
+          <strong>R$ 8.500,00</strong>
+        </div>
+        <div class="visual-card orange">
+          <span>Banco do Brasil</span>
+          <b>R$ 5.200,00</b>
+        </div>
+        <p>Acompanhe suas transa&ccedil;&otilde;es e metas sem complicar o dia.</p>
+      </div>
+
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">C$+</div>
+        <strong>CashControl</strong>
+      </div>
+
+      <form class="auth-card" data-auth-form>
+        <label>
+          E-mail
+          <input type="email" placeholder="E-mail..." autocomplete="email">
+        </label>
+        <label>
+          Senha
+          <span class="password-field">
+            <input type="password" placeholder="Senha..." autocomplete="current-password">
+            <button class="ghost-icon" type="button" data-toggle-password aria-label="Mostrar senha">olho</button>
+          </span>
+        </label>
+        <a href="#" data-screen-link="otp-screen">Esqueceu a senha?</a>
+        <button class="primary-button" type="submit">Login</button>
+      </form>
+
+      <div class="divider"><span>OU</span></div>
+      <p class="auth-copy">N&atilde;o possui uma conta? <a href="#" data-screen-link="register-screen">Fazer cadastro</a></p>
+    </section>
+
+    <section class="phone auth-screen" id="otp-screen" aria-label="Codigo de recuperacao">
+      <div class="auth-visual" aria-hidden="true">
+        <span class="visual-pill">Seguran&ccedil;a</span>
+        <div class="visual-balance">
+          <small>Verifica&ccedil;&atilde;o</small>
+          <strong>6 d&iacute;gitos</strong>
+        </div>
+        <div class="visual-card magenta">
+          <span>Acesso protegido</span>
+          <b>C$+</b>
+        </div>
+        <p>Confirme seu e-mail para manter seus dados financeiros protegidos.</p>
+      </div>
+
+      <div class="brand compact">
+        <div class="brand-mark" aria-hidden="true">C$+</div>
+        <strong>CashControl</strong>
+      </div>
+      <h1 class="otp-title">C&oacute;digo enviado para o seu e-mail!</h1>
+      <div class="otp-grid" aria-label="Codigo de seis digitos">
+        <input maxlength="1" inputmode="numeric">
+        <input maxlength="1" inputmode="numeric">
+        <input maxlength="1" inputmode="numeric">
+        <input maxlength="1" inputmode="numeric">
+        <input maxlength="1" inputmode="numeric">
+        <input maxlength="1" inputmode="numeric">
+      </div>
+      <button class="link-button" type="button" id="resend-code">Reenviar o c&oacute;digo em 42s</button>
+      <div class="divider"><span>OU</span></div>
+      <p class="auth-copy">N&atilde;o possui uma conta? <a href="#" data-screen-link="register-screen">Fazer cadastro</a></p>
+    </section>
+
+    <main class="phone app-screen" id="app-screen">
+      <aside class="app-brand" aria-label="CashControl">
+        <div class="brand-mark small" aria-hidden="true">C$+</div>
+        <strong>CashControl</strong>
+      </aside>
+
+      <header class="app-header">
+        <div>
+          <p>Ol&aacute;, usu&aacute;rio!</p>
+          <h1 data-page-title>Bem-vindo de volta!</h1>
+        </div>
+        <button class="add-button" type="button" data-open-modal aria-label="Adicionar">+</button>
+      </header>
+
+      <section class="page is-active" id="home-page" data-title="Bem-vindo de volta!">
+        <article class="balance-card">
+          <span class="card-eyebrow">Saldo atual</span>
+          <strong>R$ 8.500,00</strong>
+          <div class="mini-stats">
+            <span class="good">Receitas: R$ 5.000,00</span>
+            <span class="bad">Despesas: R$ 2.500,00</span>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <h2>Despesas por categoria</h2>
+            <span>Jan</span>
+          </div>
+          <div class="chart-row">
+            <div class="donut" aria-label="Grafico de despesas"></div>
+            <ul class="legend">
+              <li><span class="dot blue"></span>Alimenta&ccedil;&atilde;o <b>R$ 1.200,00</b></li>
+              <li><span class="dot purple"></span>Transporte <b>R$ 450,00</b></li>
+              <li><span class="dot pink"></span>Entretenimento <b>R$ 300,00</b></li>
+              <li><span class="dot yellow"></span>Outros <b>R$ 550,00</b></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <h2>Transa&ccedil;&otilde;es recentes</h2>
+            <button class="link-button" type="button">Ver todas</button>
+          </div>
+          <div class="transaction income">
+            <span>Sal&aacute;rio<br><small>Receita</small></span>
+            <strong>+R$ 5.000,00</strong>
+          </div>
+          <div class="transaction expense">
+            <span>Restaurante Ordones<br><small>Entretenimento</small></span>
+            <strong>-R$ 300,00</strong>
+          </div>
+        </article>
+      </section>
+
+      <section class="page" id="accounts-page" data-title="Contas Banc&aacute;rias">
+        <article class="total-card">
+          <span>Saldo total</span>
+          <strong>R$ 8.500,00</strong>
+        </article>
+        <h2 class="section-heading">Suas contas</h2>
+        <article class="bank-card orange">
+          <span>Banco do Brasil</span>
+          <small>Conta Corrente</small>
+          <strong>R$ 5.200,00</strong>
+        </article>
+        <article class="bank-card magenta">
+          <span>Nubank</span>
+          <small>Conta Corrente</small>
+          <strong>R$ 3.300,00</strong>
+        </article>
+        <button class="secondary-button" type="button">+ Adicionar conta</button>
+      </section>
+
+      <section class="page" id="cards-page" data-title="Cart&otilde;es">
+        <article class="credit-card magenta">
+          <div>
+            <span>Nubank Ultravioleta</span>
+            <b>•••• 4532</b>
+          </div>
+          <p>Dispon&iacute;vel <strong>R$ 6.550,00</strong></p>
+          <div class="progress"><span style="width: 35%"></span></div>
+          <small>R$ 3.450,00 usado &nbsp; Limite: R$ 10.000,00</small>
+        </article>
+        <article class="credit-card orange">
+          <div>
+            <span>Ita&uacute; Gold</span>
+            <b>•••• 8721</b>
+          </div>
+          <p>Dispon&iacute;vel <strong>R$ 3.800,00</strong></p>
+          <div class="progress"><span style="width: 24%"></span></div>
+          <small>R$ 1.200,00 usado &nbsp; Limite: R$ 5.000,00</small>
+        </article>
+        <button class="secondary-button" type="button" data-open-modal>+ Adicionar cart&atilde;o</button>
+      </section>
+
+      <section class="page" id="investments-page" data-title="Investimentos">
+        <article class="investment-card">
+          <span>Patrim&ocirc;nio Investido</span>
+          <strong>R$ -----------</strong>
+        </article>
+        <h2 class="section-heading">Seus investimentos</h2>
+        <article class="warning-card">
+          <strong>AVISO!</strong>
+          <p>Registre uma conta de banco para conseguir ter acesso aos seus investimentos.</p>
+        </article>
+        <button class="secondary-button" type="button" data-nav="accounts-page">+ Adicionar banco</button>
+      </section>
+
+      <section class="page" id="reports-page" data-title="Relat&oacute;rios">
+        <article class="report-hero">
+          <h2>Gerar novo relat&oacute;rio</h2>
+          <p>Selecione o per&iacute;odo desejado</p>
+          <button class="soft-button" type="button">Gerar relat&oacute;rio personalizado</button>
+        </article>
+        <h2 class="section-heading">Relat&oacute;rios dispon&iacute;veis</h2>
+        <div class="report-item">
+          <span>Relat&oacute;rio Mensal - Mar&ccedil;o 2026<br><small>Mensal • 31 Mar 2026 • 245 KB</small></span>
+          <button type="button" aria-label="Baixar">↓</button>
+        </div>
+        <div class="report-item">
+          <span>Relat&oacute;rio Mensal - Fevereiro 2026<br><small>Mensal • 28 Fev 2026 • 238 KB</small></span>
+          <button type="button" aria-label="Baixar">↓</button>
+        </div>
+      </section>
+
+      <section class="page" id="upload-page" data-title="Upload de Extrato">
+        <article class="upload-box" id="upload-box">
+          <input type="file" id="statement-file" accept=".pdf,.txt,.csv" hidden>
+          <span class="upload-icon">↑</span>
+          <strong>Arraste e solte o arquivo do seu extrato aqui</strong>
+          <small>ou</small>
+          <button class="soft-button" type="button" id="pick-file">Selecionar arquivo de extrato</button>
+          <em>Tipos suportados: PDF, TXT, CSV (at&eacute; 10MB)</em>
+        </article>
+        <article class="panel how-it-works">
+          <h2>Como funciona?</h2>
+          <p>Fa&ccedil;a upload do extrato, deixe a IA categorizar suas transa&ccedil;&otilde;es e visualize os gastos por categoria.</p>
+        </article>
+      </section>
+
+      <nav class="bottom-nav" aria-label="Navegacao principal">
+        <button class="is-active" type="button" data-nav="home-page">In&iacute;cio</button>
+        <button type="button" data-nav="accounts-page">Contas</button>
+        <button type="button" data-nav="cards-page">Cart&otilde;es</button>
+        <button type="button" data-nav="investments-page">Invest.</button>
+        <button type="button" data-nav="reports-page">Relat.</button>
+        <button type="button" data-nav="upload-page">Extrato</button>
+      </nav>
+    </main>
+  </div>
+
+  <dialog class="card-modal" id="card-modal">
+    <button class="modal-close" type="button" data-close-modal aria-label="Fechar">×</button>
+    <h2>Adicionar novo cart&atilde;o</h2>
+    <p>Adicione seus novos cart&otilde;es</p>
+    <article class="credit-card magenta preview-card">
+      <div>
+        <span id="preview-owner">Nubank Ultravioleta</span>
+        <b id="preview-number">•••• 4532</b>
+      </div>
+      <small>CVC <b id="preview-cvc">453</b></small>
+      <small>DATA DE EXPIRA&Ccedil;&Atilde;O <b id="preview-date">07/26</b></small>
+    </article>
+    <label>N&uacute;mero do cart&atilde;o <input id="card-number" maxlength="19" placeholder="N&uacute;mero do cart&atilde;o"></label>
+    <div class="form-row">
+      <label>CVC <input id="card-cvc" maxlength="3" placeholder="CVC"></label>
+      <label>Data <input id="card-date" maxlength="5" placeholder="MM/AA"></label>
+    </div>
+    <label>Nome no cart&atilde;o <input id="card-owner" placeholder="Nome no cart&atilde;o"></label>
+    <button class="primary-button" type="button" id="save-card">Adicionar cart&atilde;o</button>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
