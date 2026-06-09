@@ -136,7 +136,6 @@
           <p>Ol&aacute;, usu&aacute;rio!</p>
           <h1 data-page-title>Bem-vindo de volta!</h1>
         </div>
-        <button class="add-button" type="button" aria-label="Adicionar">+</button>
       </header>
 
       <section class="page is-active" id="home-page" data-title="Bem-vindo de volta!">
@@ -157,7 +156,7 @@
           <div class="chart-row">
             <div class="donut" aria-label="Grafico de despesas"></div>
             <ul class="legend">
-              <li><span class="dot blue"></span>Alimenta&ccedil;&atilde;o <b>R$ 1.200,00</b></li>
+              <li><span class="dot blue"></span>Alimentação <b>R$ 1.200,00</b></li>
               <li><span class="dot purple"></span>Transporte <b>R$ 450,00</b></li>
               <li><span class="dot pink"></span>Entretenimento <b>R$ 300,00</b></li>
               <li><span class="dot yellow"></span>Outros <b>R$ 550,00</b></li>
@@ -165,18 +164,52 @@
           </div>
         </article>
 
-        <article class="panel">
+        <article class="panel" id="transactions-panel">
           <div class="panel-header">
-            <h2>Transa&ccedil;&otilde;es recentes</h2>
-            <button class="link-button" type="button">Ver todas</button>
+            <h2>Transações recentes</h2>
+            <button class="link-button" type="button" id="toggle-transactions">Ver todas</button>
           </div>
-          <div class="transaction income">
-            <span>Sal&aacute;rio<br><small>Receita</small></span>
-            <strong>+R$ 5.000,00</strong>
-          </div>
-          <div class="transaction expense">
-            <span>Restaurante Ordones<br><small>Entretenimento</small></span>
-            <strong>-R$ 300,00</strong>
+          <div class="tx-list">
+            <div class="transaction income">
+              <span>Salário<br><small>Receita</small></span>
+              <strong>+R$ 5.000,00</strong>
+            </div>
+            <div class="transaction expense">
+              <span>Restaurante Ordones<br><small>Entretenimento</small></span>
+              <strong>-R$ 300,00</strong>
+            </div>
+            <div class="transaction expense extra-tx">
+              <span>Spotify<br><small>Assinatura</small></span>
+              <strong>-R$ 21,90</strong>
+            </div>
+            <div class="transaction expense extra-tx">
+              <span>iFood<br><small>Alimentação</small></span>
+              <strong>-R$ 87,50</strong>
+            </div>
+            <div class="transaction income extra-tx">
+              <span>Freelance Design<br><small>Receita extra</small></span>
+              <strong>+R$ 1.200,00</strong>
+            </div>
+            <div class="transaction expense extra-tx">
+              <span>Posto Shell<br><small>Transporte</small></span>
+              <strong>-R$ 180,00</strong>
+            </div>
+            <div class="transaction expense extra-tx">
+              <span>Netflix<br><small>Assinatura</small></span>
+              <strong>-R$ 55,90</strong>
+            </div>
+            <div class="transaction expense extra-tx">
+              <span>Mercado Extra<br><small>Alimentação</small></span>
+              <strong>-R$ 430,00</strong>
+            </div>
+            <div class="transaction income extra-tx">
+              <span>Rendimento CDB<br><small>Investimentos</small></span>
+              <strong>+R$ 312,40</strong>
+            </div>
+            <div class="transaction expense extra-tx">
+              <span>Conta de Luz<br><small>Moradia</small></span>
+              <strong>-R$ 210,00</strong>
+            </div>
           </div>
         </article>
       </section>
@@ -197,7 +230,7 @@
           <small>Conta Corrente</small>
           <strong>R$ 3.300,00</strong>
         </article>
-        <button class="secondary-button" type="button">+ Adicionar conta</button>
+        <button class="secondary-button" type="button" data-open-account-modal>+ Adicionar conta</button>
       </section>
 
       <section class="page" id="cards-page" data-title="Cart&otilde;es">
@@ -219,19 +252,22 @@
           <div class="progress"><span style="width: 24%"></span></div>
           <small>R$ 1.200,00 usado &nbsp; Limite: R$ 5.000,00</small>
         </article>
+        <button class="secondary-button" type="button" data-open-modal>+ Adicionar cart&atilde;o</button>
+
       </section>
 
       <section class="page" id="investments-page" data-title="Investimentos">
         <article class="investment-card">
-          <span>Patrim&ocirc;nio Investido</span>
-          <strong>R$ -----------</strong>
+          <span>Patrimônio Investido</span>
+          <strong id="total-invested">R$ -----------</strong>
         </article>
         <h2 class="section-heading">Seus investimentos</h2>
-        <article class="warning-card">
+        <article class="warning-card" id="investments-warning">
           <strong>AVISO!</strong>
           <p>Registre uma conta de banco para conseguir ter acesso aos seus investimentos.</p>
         </article>
-        <button class="secondary-button" type="button" data-nav="accounts-page">+ Adicionar banco</button>
+        <button class="secondary-button" id="inv-add-bank-btn" type="button" data-nav="accounts-page" style="grid-column: span 4">+ Adicionar banco</button>
+        <div id="investments-list" style="display:contents"></div>
       </section>
 
       <section class="page" id="reports-page" data-title="Relat&oacute;rios">
@@ -274,6 +310,57 @@
         <button type="button" data-nav="reports-page">Relat.</button>
         <button type="button" data-nav="upload-page">Extrato</button>
       </nav>
+      <dialog class="card-modal" id="card-modal">
+        <button class="modal-close" type="button" data-close-modal aria-label="Fechar">&times;</button>
+        <h2>Adicionar novo cart&atilde;o</h2>
+        <p>Adicione seus novos cart&otilde;es</p>
+        <article class="credit-card magenta preview-card">
+          <div>
+            <span id="preview-owner">Nubank Ultravioleta</span>
+            <b id="preview-number">&bull;&bull;&bull;&bull; 4532</b>
+          </div>
+          <small>CVC <b id="preview-cvc">453</b></small>
+          <small>DATA DE EXPIRA&Ccedil;&Atilde;O <b id="preview-date">07/26</b></small>
+        </article>
+        <label>N&uacute;mero do cart&atilde;o <input id="card-number" maxlength="19" placeholder="N&uacute;mero do cart&atilde;o"></label>
+        <div class="form-row">
+          <label>CVC <input id="card-cvc" maxlength="3" placeholder="CVC"></label>
+          <label>Data <input id="card-date" maxlength="5" placeholder="MM/AA"></label>
+        </div>
+        <label>Nome no cart&atilde;o <input id="card-owner" placeholder="Nome no cart&atilde;o"></label>
+        <button class="primary-button" type="button" id="save-card">Adicionar cart&atilde;o</button>
+      </dialog>
+      <dialog class="card-modal" id="account-modal">
+        <button class="modal-close" type="button" data-close-account-modal aria-label="Fechar">×</button>
+        <h2>Adicionar nova conta</h2>
+        <p>Adicione suas contas bancárias</p>
+
+        <article class="bank-card orange preview-account-card" id="preview-account-card">
+          <span id="preview-bank-name">Nome do banco</span>
+          <small id="preview-account-type">Tipo de conta</small>
+          <strong id="preview-account-balance">R$ 0,00</strong>
+        </article>
+
+        <label>Nome do banco <input id="bank-name" placeholder="Ex: Nubank, Itaú, Bradesco..."></label>
+        <label>Tipo de conta
+          <select id="account-type" style="width:100%; min-height:48px; border:1.5px solid var(--line-strong); border-radius:15px; color:var(--text); background:rgba(8,18,48,.76); outline:none; padding:0 18px;">
+            <option value="Conta Corrente">Conta Corrente</option>
+            <option value="Conta Poupança">Conta Poupança</option>
+            <option value="Conta Salário">Conta Salário</option>
+            <option value="Conta Digital">Conta Digital</option>
+          </select>
+        </label>
+        <label>Saldo inicial <input id="account-balance" type="text" placeholder="R$ 0,00"></label>
+        <label>Cor do cartão
+          <div style="display:flex; gap:12px; margin-top:6px;">
+            <button type="button" class="color-pick is-selected" data-color="orange" style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#ffa51d,#d96d00);border:3px solid white;cursor:pointer;"></button>
+            <button type="button" class="color-pick" data-color="magenta" style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#c600d8,#820095);border:3px solid transparent;cursor:pointer;"></button>
+            <button type="button" class="color-pick" data-color="blue" style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#2678ff,#0753dc);border:3px solid transparent;cursor:pointer;"></button>
+            <button type="button" class="color-pick" data-color="green" style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#07be3d,#01851e);border:3px solid transparent;cursor:pointer;"></button>
+          </div>
+        </label>
+        <button class="primary-button" type="button" id="save-account">Adicionar conta</button>
+      </dialog>
     </main>
   </div>
 
