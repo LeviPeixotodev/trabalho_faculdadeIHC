@@ -136,7 +136,7 @@
           <p>Ol&aacute;, usu&aacute;rio!</p>
           <h1 data-page-title>Bem-vindo de volta!</h1>
         </div>
-        <button class="add-button" type="button" data-open-modal aria-label="Adicionar">+</button>
+        <button class="add-button" type="button" aria-label="Adicionar">+</button>
       </header>
 
       <section class="page is-active" id="home-page" data-title="Bem-vindo de volta!">
@@ -219,7 +219,6 @@
           <div class="progress"><span style="width: 24%"></span></div>
           <small>R$ 1.200,00 usado &nbsp; Limite: R$ 5.000,00</small>
         </article>
-        <button class="secondary-button" type="button" data-open-modal>+ Adicionar cart&atilde;o</button>
       </section>
 
       <section class="page" id="investments-page" data-title="Investimentos">
@@ -277,27 +276,6 @@
       </nav>
     </main>
   </div>
-
-  <dialog class="card-modal" id="card-modal">
-    <button class="modal-close" type="button" data-close-modal aria-label="Fechar">×</button>
-    <h2>Adicionar novo cart&atilde;o</h2>
-    <p>Adicione seus novos cart&otilde;es</p>
-    <article class="credit-card magenta preview-card">
-      <div>
-        <span id="preview-owner">Nubank Ultravioleta</span>
-        <b id="preview-number">•••• 4532</b>
-      </div>
-      <small>CVC <b id="preview-cvc">453</b></small>
-      <small>DATA DE EXPIRA&Ccedil;&Atilde;O <b id="preview-date">07/26</b></small>
-    </article>
-    <label>N&uacute;mero do cart&atilde;o <input id="card-number" maxlength="19" placeholder="N&uacute;mero do cart&atilde;o"></label>
-    <div class="form-row">
-      <label>CVC <input id="card-cvc" maxlength="3" placeholder="CVC"></label>
-      <label>Data <input id="card-date" maxlength="5" placeholder="MM/AA"></label>
-    </div>
-    <label>Nome no cart&atilde;o <input id="card-owner" placeholder="Nome no cart&atilde;o"></label>
-    <button class="primary-button" type="button" id="save-card">Adicionar cart&atilde;o</button>
-  </dialog>
 
   <script src="script.js"></script>
 </body>
